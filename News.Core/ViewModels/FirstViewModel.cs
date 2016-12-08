@@ -13,11 +13,9 @@ namespace News.Core.ViewModels
             var contents = loader.GetTextResource("channels.xml");
         }
 
-        private string _hello = "Hello MvvmCross";
-        public string Hello
-        { 
-            get { return _hello; }
-            set { SetProperty (ref _hello, value); }
+        public void ShowFragment()
+        {
+            ShowViewModel<FragmentViewModel>();
         }
     }
 }

@@ -2,6 +2,9 @@ using Android.Content;
 using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
+using MvvmCross.Droid.Views;
+using MvvmCross.Droid.Shared.Presenter;
+using MvvmCross.Platform;
 
 namespace News.Droid
 {
@@ -19,6 +22,13 @@ namespace News.Droid
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
+        }
+
+        protected override IMvxAndroidViewPresenter CreateViewPresenter()
+        {
+            var mvxFragmentsPresenter = new MvxFragmentsPresenter(AndroidViewAssemblies);
+            Mvx.RegisterSingleton<IMvxAndroidViewPresenter>(mvxFragmentsPresenter);
+            return mvxFragmentsPresenter;
         }
     }
 }
